@@ -32,9 +32,9 @@
 		B721868D28B4C3EC00218C4C /* TechTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B721869A28B4C3EC00218C4C /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72186CF28B4EE3C00218C4C /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
-		B72186D628B6065F00218C4C /* FriendsPackge */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FriendsPackge; sourceTree = "<group>"; };
 		B7565D2F28B61DB000B11DA8 /* FriendsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsUITests.swift; sourceTree = "<group>"; };
 		B7565D3128B6316400B11DA8 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
+		B7565D3928B637E800B11DA8 /* FriendsPackge */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FriendsPackge; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 		B721868028B4C3E800218C4C = {
 			isa = PBXGroup;
 			children = (
-				B72186D528B6065F00218C4C /* Packages */,
+				B7565D3828B637E800B11DA8 /* Packages */,
 				B721868528B4C3E900218C4C /* Shared */,
 				B721869D28B4C3EC00218C4C /* Tests iOS */,
 				B721868E28B4C3EC00218C4C /* Products */,
@@ -103,10 +103,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B72186D528B6065F00218C4C /* Packages */ = {
+		B7565D3828B637E800B11DA8 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				B72186D628B6065F00218C4C /* FriendsPackge */,
+				B7565D3928B637E800B11DA8 /* FriendsPackge */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
