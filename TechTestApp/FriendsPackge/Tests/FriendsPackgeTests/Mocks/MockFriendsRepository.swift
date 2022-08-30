@@ -16,9 +16,9 @@ class MockFriendsRepository: FriendsRepositoryProtocol {
     var friend: FriendDetailDomainModel?
     var error: Error?
     
-    func getFriendWith(friendId: String) -> FriendDomainResponse {
+    func getFriendWith(friendId: String) -> Any {
 
-        return Promise { seal in
+        return Promise<Any> { seal in
             if let error = error {
                 seal.reject(error)
             } else {
@@ -31,8 +31,8 @@ class MockFriendsRepository: FriendsRepositoryProtocol {
         }
     }
     
-    func getFriends() -> FriendsDomainResponse {
-        return Promise { seal in
+    func getFriends() -> Any {
+        return Promise<Any> { seal in
             if let error = error {
                 seal.reject(error)
             } else {

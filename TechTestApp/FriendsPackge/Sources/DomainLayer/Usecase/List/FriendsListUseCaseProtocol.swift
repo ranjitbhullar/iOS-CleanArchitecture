@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import PromiseKit
 
 public protocol FriendsListUseCaseProtocol {
-    func getFriends() -> FriendsDomainResponse
+    func getFriends() -> Any
 }

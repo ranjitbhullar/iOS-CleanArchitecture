@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import PromiseKit
+
 @testable import DomainLayer
 
 class FriendDetailUseCaseTest: XCTestCase  {
@@ -30,9 +32,9 @@ class FriendDetailUseCaseTest: XCTestCase  {
         expectation = expectation(description: "Success case")
         repository.friend = MockFriendDetailDomainModel.friend
         guard let useCase = useCase else { return }
-        useCase.getFriendDetailWith(friendId: friend!.friendId)
-            .done { friend in
-                if friend.friendId == "123" {
+        (useCase.getFriendDetailWith(friendId: friend!.friendId) as! Promise<Any>)
+            .done { friend  in
+                if (friend as! FriendDetailDomainModel).friendId == "123" {
                     self.expectation.fulfill()
                 }
             }

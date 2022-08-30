@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PromiseKit
 
 public class FriendsListUseCase: FriendsListUseCaseProtocol {
 
@@ -16,7 +15,7 @@ public class FriendsListUseCase: FriendsListUseCaseProtocol {
         self.repository = repository
     }
         
-    public func getFriends() -> FriendsDomainResponse {
+    public func getFriends() -> Any {
         return repository.getFriends()
     }
 }

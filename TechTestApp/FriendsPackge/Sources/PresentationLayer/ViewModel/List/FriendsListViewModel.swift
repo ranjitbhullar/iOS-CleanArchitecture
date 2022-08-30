@@ -7,6 +7,7 @@
 
 import Foundation
 import DomainLayer
+import PromiseKit
 
 public final class FriendsListViewModel: ObservableObject, FriendsListViewModelProtocol {
     
@@ -20,9 +21,9 @@ public final class FriendsListViewModel: ObservableObject, FriendsListViewModelP
     }
     
     public func fetchFriends() {
-        useCase.getFriends()
+        (useCase.getFriends() as! Promise<Any>)
             .done(on: .main) { [weak self] model in
-                self?.getData(model: model)
+                self?.getData(model: model as! [FriendsListDomainModel])
             }
             .catch(on: .main, policy: .allErrors) {[weak self] error in
                 self?.errorMessage = error.localizedDescription

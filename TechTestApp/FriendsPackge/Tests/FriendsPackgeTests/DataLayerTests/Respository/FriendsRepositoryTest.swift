@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import PromiseKit
+@testable import DomainLayer
 @testable import DataLayer
 
 class FriendsRepositoryTest: XCTestCase {
@@ -25,9 +27,9 @@ class FriendsRepositoryTest: XCTestCase {
         let expecatation = expectation(description: "Success")
         mockDataStore.friend = MockFriendDetailData.friend
         guard let friendsRepository = friendsRepository else { return }
-        friendsRepository.getFriendWith(friendId: "123")
+        (friendsRepository.getFriendWith(friendId: "123") as! Promise<Any>)
             .done { model in
-                if !model.friendId.isEmpty {
+                if !(model as! FriendDetailDomainModel).friendId.isEmpty {
                     expecatation.fulfill()
                 }
                 else {
@@ -45,7 +47,7 @@ class FriendsRepositoryTest: XCTestCase {
         let expecatation = expectation(description: "Failure")
         mockDataStore.error = NSError(domain: "com.test.error", code: 0, userInfo: [NSLocalizedDescriptionKey:   "Failed error"])
         guard let friendsRepository = friendsRepository else { return }
-        friendsRepository.getFriendWith(friendId: "123")
+        (friendsRepository.getFriendWith(friendId: "123") as! Promise<Any>)
             .catch {error in
                 XCTAssertTrue(error.localizedDescription == "Failed error")
                 expecatation.fulfill()
@@ -58,9 +60,9 @@ class FriendsRepositoryTest: XCTestCase {
         let expecatation = expectation(description: "Success")
         mockDataStore.friends = MockFriendsData.friend
         guard let friendsRepository = friendsRepository else { return }
-        friendsRepository.getFriends()
+        (friendsRepository.getFriends() as! Promise<Any>)
             .done { model in
-                let friendsCount = model.count
+                let friendsCount = (model as! [FriendsListDomainModel]).count
                 if friendsCount >= 1 {
                     expecatation.fulfill()
                 }
@@ -76,7 +78,7 @@ class FriendsRepositoryTest: XCTestCase {
         let expecatation = expectation(description: "Failure")
         mockDataStore.error = NSError(domain: "com.test.error", code: 0, userInfo: [NSLocalizedDescriptionKey:   "Failed error"])
         guard let friendsRepository = friendsRepository else { return }
-        friendsRepository.getFriends()
+        (friendsRepository.getFriends() as! Promise<Any>)
             .catch {error in
                 XCTAssertTrue(error.localizedDescription == "Failed error")
                 expecatation.fulfill()

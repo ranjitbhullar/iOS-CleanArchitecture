@@ -15,7 +15,7 @@ public class FriendsDetailUseCase: FriendsDetailUseCaseProtocol {
         self.repository = repository
     }
     
-    public func getFriendDetailWith(friendId: String) -> FriendDomainResponse {
+    public func getFriendDetailWith(friendId: String) -> Any {
         return repository.getFriendWith(friendId: friendId)
     }
     

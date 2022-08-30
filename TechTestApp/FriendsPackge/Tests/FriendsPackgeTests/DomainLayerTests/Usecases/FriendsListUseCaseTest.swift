@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import PromiseKit
 @testable import DomainLayer
 
 class FriendsListUseCaseTest: XCTestCase {
@@ -26,9 +27,9 @@ class FriendsListUseCaseTest: XCTestCase {
 
         repository.friends = MockFriendsDomainModel.friends
         guard let useCase = useCase else { return }
-        useCase.getFriends()
+        (useCase.getFriends() as! Promise<Any>)
             .done { model in
-                let friendsCount = model.count
+                let friendsCount = (model as! [FriendsListDomainModel]).count
                 if friendsCount >= 1 {
                     expecatation.fulfill()
                 }
@@ -42,7 +43,7 @@ class FriendsListUseCaseTest: XCTestCase {
         let expecatation = expectation(description: "Failure")
         repository.error = NSError(domain: "com.example.error", code: 0, userInfo: [NSLocalizedDescriptionKey:   "Failed error"])
         guard let useCase = useCase else { return }
-        useCase.getFriends()
+        (useCase.getFriends() as! Promise<Any>)
             .catch { error in
                 XCTAssertTrue(error.localizedDescription == "Failed error")
                 expecatation.fulfill()

@@ -24,13 +24,12 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "PresentationLayer",
-            dependencies: ["DomainLayer"]),
+            dependencies: ["DomainLayer", "PromiseKit"]),
         .target(
-            name: "DomainLayer",
-            dependencies: ["PromiseKit"]),
+            name: "DomainLayer"),
         .target(
             name: "DataLayer",
-            dependencies: ["DomainLayer"]),
+            dependencies: ["DomainLayer", "PromiseKit"]),
         //MARK: - Tests
         .testTarget(
             name: "FriendsPackgeTests",

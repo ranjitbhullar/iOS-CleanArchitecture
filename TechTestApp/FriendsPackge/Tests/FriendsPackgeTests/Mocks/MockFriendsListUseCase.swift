@@ -14,8 +14,8 @@ class MockFriendsListUseCase: FriendsListUseCaseProtocol {
     var friend: [FriendsListDomainModel]?
     var error: Error?
 
-    func getFriends() -> FriendsDomainResponse {
-        return Promise { seal in
+    func getFriends() -> Any {
+        return Promise<Any> { seal in
             if let error = error {
                 seal.reject(error)
             } else {

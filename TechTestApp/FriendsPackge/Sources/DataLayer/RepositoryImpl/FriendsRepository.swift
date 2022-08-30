@@ -9,6 +9,9 @@ import Foundation
 import PromiseKit
 import DomainLayer
 
+public typealias FriendDomainResponse = Promise<FriendDetailDomainModel>
+public typealias FriendsDomainResponse = Promise<[FriendsListDomainModel]>
+
 public final class FriendsRepository: FriendsRepositoryProtocol {
     
     private let dataStore: FriendsDataStoreProtocol
@@ -17,8 +20,8 @@ public final class FriendsRepository: FriendsRepositoryProtocol {
     }
     
     
-    public func getFriendWith(friendId: String) -> FriendDomainResponse {
-        return Promise { seal in
+    public func getFriendWith(friendId: String) -> Any {
+        return Promise<Any> { seal in
             dataStore.fetchFriendWith(friendId: friendId).done { friendData in
                 let mapper = FriendDataToDomainMapper(dataModel: friendData)
                 seal.fulfill(mapper.dataToDomainMapper())
@@ -29,8 +32,8 @@ public final class FriendsRepository: FriendsRepositoryProtocol {
         }
     }
     
-    public func getFriends() -> FriendsDomainResponse {
-        return Promise { seal in
+    public func getFriends() -> Any {
+        return Promise<Any> { seal in
             dataStore.fetchFriendsData().done { dataModel in
                 let mapper = FriendsDataToDomainMapper(dataModel: dataModel)
                 seal.fulfill(mapper.dataToDomainMapper())

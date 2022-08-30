@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PromiseKit
 
 public protocol CacheManagerProtocol {
     func objectForKey(key: String) -> AnyObject?
